@@ -1,6 +1,7 @@
 package com.zova0.rinjindoudeshouserver.service;
 
 import com.zova0.rinjindoudeshouserver.dto.RegisterRequest;
+import com.zova0.rinjindoudeshouserver.exception.AppException;
 import com.zova0.rinjindoudeshouserver.model.NotificationEmail;
 import com.zova0.rinjindoudeshouserver.model.User;
 import com.zova0.rinjindoudeshouserver.model.VerificationToken;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.Instant;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -50,5 +52,19 @@ public class AuthService {
 
         verificationTokenRepository.save(verificationToken);
         return token;
+    }
+
+    public void verifyAccount(String token) {
+        Optional<VerificationToken> verificationToken = verificationTokenRepository.findByToken(token);
+        verificationToken.orElseThrow(() -> new AppException("Invalid token"));
+        fetchUserAndEnable(verificationToken.get());
+    }
+
+    @Transactional
+    private void fetchUserAndEnable(VerificationToken verificationToken) {
+        String username = verificationToken.getUser().getUsername();
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new AppException("User not found with name: " + username));
+        user.setEnabled(true);
+        userRepository.save(user);
     }
 }
