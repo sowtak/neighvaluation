@@ -1,6 +1,5 @@
 package com.zova0.rinjindoudeshouserver.model;
 
-import jdk.jfr.Enabled;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,9 +8,9 @@ import javax.persistence.*;
 import java.time.Instant;
 
 @Data
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Enabled
 @Table(name = "token")
 public class VerificationToken {
     @Id
