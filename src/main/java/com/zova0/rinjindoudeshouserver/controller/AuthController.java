@@ -1,5 +1,6 @@
 package com.zova0.rinjindoudeshouserver.controller;
 
+import com.zova0.rinjindoudeshouserver.dto.LoginRequest;
 import com.zova0.rinjindoudeshouserver.dto.RegisterRequest;
 import com.zova0.rinjindoudeshouserver.service.AuthService;
 import lombok.AllArgsConstructor;
@@ -24,5 +25,10 @@ public class AuthController {
     public ResponseEntity<String> verifyAccount(@PathVariable String token) {
         authService.verifyAccount(token);
         return new ResponseEntity<>("アカウントが有効化されました", HttpStatus.OK);
+    }
+
+    @PostMapping("/login")
+    public void login(@RequestBody LoginRequest loginRequest) {
+        authService.login(loginRequest);
     }
 }

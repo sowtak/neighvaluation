@@ -1,5 +1,6 @@
 package com.zova0.rinjindoudeshouserver.service;
 
+import com.zova0.rinjindoudeshouserver.dto.LoginRequest;
 import com.zova0.rinjindoudeshouserver.dto.RegisterRequest;
 import com.zova0.rinjindoudeshouserver.exception.AppException;
 import com.zova0.rinjindoudeshouserver.model.NotificationEmail;
@@ -8,6 +9,7 @@ import com.zova0.rinjindoudeshouserver.model.VerificationToken;
 import com.zova0.rinjindoudeshouserver.repository.UserRepository;
 import com.zova0.rinjindoudeshouserver.repository.VerificationTokenRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,7 @@ public class AuthService {
     private final UserRepository userRepository;
     private final VerificationTokenRepository verificationTokenRepository;
     private final MailService mailService;
+    private final AuthenticationManager authenticationManager;
 
     @Transactional
     public void signUp(RegisterRequest registerRequest) {
@@ -66,5 +69,8 @@ public class AuthService {
         User user = userRepository.findByUsername(username).orElseThrow(() -> new AppException("User not found with name: " + username));
         user.setEnabled(true);
         userRepository.save(user);
+    }
+
+    public void login(LoginRequest loginRequest) {
     }
 }
