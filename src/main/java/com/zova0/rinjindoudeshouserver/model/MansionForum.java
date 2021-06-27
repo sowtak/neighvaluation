@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Builder
-public class Mansion {
+public class MansionForum {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
