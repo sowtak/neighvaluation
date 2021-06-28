@@ -12,6 +12,7 @@ import com.zova0.rinjindoudeshouserver.repository.UserRepository;
 import com.zova0.rinjindoudeshouserver.repository.VerificationTokenRepository;
 import com.zova0.rinjindoudeshouserver.security.JwtProvider;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -28,6 +29,7 @@ import java.util.UUID;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class AuthenticationService {
 
     private final PasswordEncoder passwordEncoder;
