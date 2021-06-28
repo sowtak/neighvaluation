@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/mansionforum")
+@RequestMapping("/api/mansion-forum")
 @AllArgsConstructor
 public class MansionForumController {
     private final MansionForumService mansionForumService;
