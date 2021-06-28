@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -22,6 +23,9 @@ public class Post {
 
     @NotBlank(message = "Post name cannot be empty or Null")
     private String title;
+
+    @Nullable
+    private String url;
 
     @NotBlank(message = "Content cannot be empty or Null")
     private String content;

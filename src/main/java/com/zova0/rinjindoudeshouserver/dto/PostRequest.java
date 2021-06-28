@@ -11,5 +11,6 @@ public class PostRequest {
     private Long postId;
     private String mansionForumName;
     private String title;
+    private String url;
     private String content;
 }

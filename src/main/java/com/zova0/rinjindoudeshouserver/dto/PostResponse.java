@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class PostResponse {
     private Long id;
     private String title;
+    private String url;
     private String content;
     private String username;
     private String mansionForumName;
