@@ -12,14 +12,28 @@
   
 # 機能
 
----
 
 - JWT認証
 - 口コミ投稿機能(作成したフォーラム内で)
 - コメント・いいね機能
 
+# アーキテクチャ: ドメイン駆動設計
+
+
+- configuration: SecuritiConfiguration設定
+- controller: Angular側から飛んできたリクエストに対してレスポンスを返したり、DTOから値を取り出して返したりする
+- dto: マッパーによって変換された値を保持しておく
+- exception: 自分で定義した例外クラス
+- mapper: DTOとレポジトリを相互変換
+- model:ドメインモデル定義
+- repository: DB操作をする関数の定義
+- security: JWT
+- service: モデルの振る舞いを実装
+
+
+
 # 今後
 
----
 
+- デプロイ
 - 検索機能をつける
