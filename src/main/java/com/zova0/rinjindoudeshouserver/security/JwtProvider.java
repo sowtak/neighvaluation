@@ -31,9 +31,10 @@ public class JwtProvider {
 
     @PostConstruct
     public void init() {
+        String path = "src/main/resources/rinjin-doudeshou.jks";
         try {
             keyStore = KeyStore.getInstance("JKS");
-            InputStream resourceAsStream = getClass().getResourceAsStream("/rinjin-doudeshou.jks");
+            InputStream resourceAsStream = getClass().getResourceAsStream(path);
             keyStore.load(resourceAsStream, "secret".toCharArray());
         } catch (KeyStoreException | CertificateException | NoSuchAlgorithmException | IOException e) {
             throw new AppException("Exception occured loading keystore", e);

@@ -11,6 +11,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface MansionForumMapper {
+
     @Mapping(target = "numberOfPosts", expression = "java(mapPosts(mansionForum.getPosts()))")
     MansionForumDto mapMansionForumToDto(MansionForum mansionForum);
 

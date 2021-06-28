@@ -17,6 +17,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -54,6 +55,14 @@ public class AuthenticationService {
                 user.getEmail(), "隣人どうでしょう　に新規登録していただき、誠にありがとうございます。" +
                 "アカウントを有効にするには、下のリンクをクリックしていただく必要があります : " +
                 "http://localhost:8080/api/auth/accountVerification/" + token));
+    }
+
+    @org.springframework.transaction.annotation.Transactional(readOnly = true)
+    public User getCurrentUser() {
+        org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder
+                .getContext().getAuthentication().getPrincipal();
+        return userRepository.findByUsername(principal.getUsername())
+                .orElseThrow(() -> new UsernameNotFoundException("Username not found: " + principal.getUsername()));
     }
 
     private String generateVerificationToken(User user) {

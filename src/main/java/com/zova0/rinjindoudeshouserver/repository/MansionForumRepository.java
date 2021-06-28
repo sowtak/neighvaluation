@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface MansionForumRepository extends JpaRepository<MansionForum, Long> {
-    Optional<MansionForum> findByName(MansionForum mansionForum);
+    Optional<MansionForum> findByName(String mansionForumName);
 }

@@ -6,6 +6,7 @@ import com.zova0.rinjindoudeshouserver.model.MansionForum;
 import com.zova0.rinjindoudeshouserver.repository.MansionForumRepository;
 import lombok.AllArgsConstructor;
 import com.zova0.rinjindoudeshouserver.mapper.MansionForumMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
