@@ -1,39 +1,39 @@
-# 隣人どうでしょう(隣人情報口コミサイト)    
-※未デプロイ
+# Neighvaluation (Website for reviewing your neighbor)
+---This is a review site.
 
----
+- When you move out of a room, you can post reviews about the people around the room you lived in.
+- It can be used as a reference for the next person who moves in.
+- ex1) It was comfortable to live in a room with no noise or voices.
+- ex2) The people on the floor above me sometimes shut the door too tightly and made a lot of noise when things fell.
+- ex3) I can hear multiple people making noise not from this building, but from the building next door.
+Things like.
 
-- 退去時などに、住んでいた部屋の周りの住人についての口コミを投稿
-- 次引っ越してくる人の参考にしてもらう
-- ex1) 物音も声も聞こえてこなくて快適だった
-- ex2) 上の階の住人が、たまに扉を強く締めたりものが落ちる音が大きい
-- ex3) この建物ではなく、隣の建物から複数の人が騒いでいる声が聞こえてくる
-といった内容のもの
-  
-# 機能
+# Feature
 
 
-- JWT認証
-- 口コミ投稿機能(作成したフォーラム内で)
-- コメント・いいね機能
+- JWT authentication
+- Review function (in the forum you created)
+- Comment and Like functions
 
-# アーキテクチャ: ドメイン駆動設計
+# architecture: domain driven design
 
 
-- configuration: SecuritiConfiguration設定
-- controller: Angular側から飛んできたリクエストに対してレスポンスを返したり、DTOから値を取り出して返したりする
-- dto: マッパーによって変換された値を保持しておく
-- exception: 自分で定義した例外クラス
-- mapper: DTOとレポジトリを相互変換
-- model:ドメインモデル定義
-- repository: DB操作をする関数の定義
+- configuration: Configure SecuritiConfiguration
+- controller: Returns responses to requests coming from the Angular side, retrieves values from the DTO, and returns them.
+- dto: Holds the values converted by the mapper.
+- exception: An exception class defined by you.
+- mapper: Converts between DTO and repository
+- model: Domain model definition
+- repository: Define functions to manipulate the DB
 - security: JWT
-- service: モデルの振る舞いを実装
+- service: Implement the model behavior
 
 
 
-# 今後
+# future
 
 
-- デプロイ
-- 検索機能をつける
+- Deploy
+- Add a search function
+
+Translated with www.DeepL.com/Translator (free version)
